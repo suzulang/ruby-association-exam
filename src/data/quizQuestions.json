@@ -1,20 +1,29 @@
-[
-  {
-    "id": 1,
-    "question": "什么是React的主要优势？",
-    "options": ["虚拟DOM", "双向数据绑定", "服务器端渲染", "以上都是"],
-    "correctAnswer": 0
-  },
-  {
-    "id": 2,
-    "question": "Next.js的主要特性是什么？",
-    "options": ["服务器端渲染", "静态站点生成", "文件系统路由", "以上都是"],
-    "correctAnswer": 3
-  },
-  {
-    "id": 3,
-    "question": "Tailwind CSS是什么类型的CSS框架？",
-    "options": ["预处理器", "后处理器", "实用优先", "组件库"],
-    "correctAnswer": 2
-  }
-]
+{
+  "questions": [
+    {
+      "id": 1,
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(2つ選択)",
+      "code": "class Stack\n  def initialize\n    @contents = []\n  end\n\n  __(1)__\nend\n\nstack = Stack.new\nstack.push(\"foo\")\nstack.push(\"bar\")\np stack.pop\n\n[実行結果]\n\"bar\"",
+      "correct_answer": "A, D",
+      "explanation": "Module#define_methodはレシーバにインスタンスメソッドを定義します。BasicObject#instance_evalではdefは特異メソッドを定義しますが、Module#class_evalではインスタンスメソッドを定義します。",
+      "options": [
+        {
+          "content": "[:push, :pop].each do |name|\n  define_method(name) do |*args|\n    @contents.send(name, *args)\n  end\nend",
+          "label": "A"
+        },
+        {
+          "content": "for name in [:push, :pop]\n  define_method(name) do |*args|\n    @contents.send(name, *args)\n  end\nend",
+          "label": "B"
+        },
+        {
+          "content": "[:push, :pop].each do |name|\n  instance_eval(<<-EOF)\n    def #{name}(*args)\n      @contents.send(:#{name}, *args)\n    end\n  EOF\nend",
+          "label": "C"
+        },
+        {
+          "content": "[:push, :pop].each do |name|\n  class_eval(<<-EOF)\n    def #{name}(*args)\n      @contents.send(:#{name}, *args)\n    end\n  EOF\nend",
+          "label": "D"
+        }
+      ]
+    }
+  ]
+}
