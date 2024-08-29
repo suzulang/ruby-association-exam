@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import quizData from '@/data/quizQuestions.json';
 
 const Quiz = () => {
@@ -62,16 +63,18 @@ const Quiz = () => {
                 >
                   <h2 className="text-xl font-semibold mb-4 text-gray-800">{questions[currentQuestion].content}</h2>
                   {questions[currentQuestion].code && (
-                    <pre className="bg-gray-800 text-white p-4 rounded-md mb-4 overflow-x-auto">
-                      <code>{questions[currentQuestion].code}</code>
-                    </pre>
+                    <ScrollArea className="h-[200px] w-full rounded-md border p-4 mb-4">
+                      <pre className="bg-gray-800 text-white p-4 rounded-md">
+                        <code>{questions[currentQuestion].code}</code>
+                      </pre>
+                    </ScrollArea>
                   )}
                   <div className="space-y-3">
                     {questions[currentQuestion].options.map((option) => (
                       <Button
                         key={option.label}
                         onClick={() => handleAnswer(option.label)}
-                        className={`w-full text-left justify-start text-lg ${
+                        className={`w-full text-left justify-start text-base ${
                           selectedAnswer === option.label
                             ? questions[currentQuestion].correct_answer.includes(option.label)
                               ? 'bg-green-500 hover:bg-green-600'
@@ -81,7 +84,10 @@ const Quiz = () => {
                         variant="outline"
                         disabled={selectedAnswer !== null}
                       >
-                        <span className="font-semibold mr-2">{option.label}.</span> {option.content}
+                        <div className="flex items-start">
+                          <span className="font-semibold mr-2 mt-0.5">{option.label}.</span>
+                          <span className="whitespace-normal">{option.content}</span>
+                        </div>
                       </Button>
                     ))}
                   </div>
