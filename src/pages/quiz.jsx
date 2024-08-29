@@ -9,6 +9,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useParams, useNavigate } from 'react-router-dom';
 import silverQuizData from '@/data/ruby_silver.json';
 import goldQuizData from '@/data/ruby_gold.json';
+import '@/styles/FlowerEffect.css';
 
 const Quiz = () => {
   const { quizType } = useParams();
@@ -19,6 +20,7 @@ const Quiz = () => {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false);
   const [isMultipleChoice, setIsMultipleChoice] = useState(false);
+  const [showFlowers, setShowFlowers] = useState(false);
 
   const quizData = quizType === 'gold' ? goldQuizData : silverQuizData;
   const questions = quizData.questions;
@@ -48,6 +50,11 @@ const Quiz = () => {
     });
   };
 
+  const triggerFlowerEffect = () => {
+    setShowFlowers(true);
+    setTimeout(() => setShowFlowers(false), 3000);
+  };
+
   const submitAnswer = () => {
     setIsAnswerSubmitted(true);
     const currentQuestionAnswers = questions[currentQuestion].correct_answer.split(', ');
@@ -56,6 +63,7 @@ const Quiz = () => {
 
     if (isCorrect) {
       setScore(score + 1);
+      triggerFlowerEffect();
     }
 
     setTimeout(() => {
@@ -175,8 +183,32 @@ const Quiz = () => {
           )}
         </CardContent>
       </Card>
+      {showFlowers && <FlowerEffect />}
     </div>
   );
+};
+
+const FlowerEffect = () => {
+  useEffect(() => {
+    const createFlower = () => {
+      const flower = document.createElement('div');
+      flower.classList.add('flower');
+      flower.style.left = Math.random() * window.innerWidth + 'px';
+      flower.style.animationDuration = Math.random() * 2 + 3 + 's';
+      flower.style.opacity = Math.random();
+      flower.innerText = '🌸';
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        document.body.removeChild(flower);
+      }, 5000);
+    };
+
+    const flowerInterval = setInterval(createFlower, 100);
+    return () => clearInterval(flowerInterval);
+  }, []);
+
+  return null;
 };
 
 export default Quiz;

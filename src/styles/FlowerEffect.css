@@ -1,0 +1,19 @@
+@keyframes fallRotate {
+  0% {
+    transform: translateY(-50vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.flower {
+  position: fixed;
+  top: -10%;
+  font-size: 24px;
+  user-select: none;
+  cursor: default;
+  animation: fallRotate linear;
+}
