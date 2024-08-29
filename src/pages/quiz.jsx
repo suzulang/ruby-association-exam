@@ -74,13 +74,18 @@ const Quiz = () => {
                       <Button
                         key={option.label}
                         onClick={() => handleAnswer(option.label)}
-                        className={`w-full text-left justify-start text-base ${
-                          selectedAnswer === option.label
-                            ? questions[currentQuestion].correct_answer.includes(option.label)
-                              ? 'bg-green-500 hover:bg-green-600'
-                              : 'bg-red-500 hover:bg-red-600'
-                            : 'bg-white hover:bg-gray-100'
-                        }`}
+                        className={`
+                          w-full text-left justify-start text-base
+                          transition-all duration-200 ease-in-out
+                          hover:scale-[1.02] hover:shadow-md
+                          ${
+                            selectedAnswer === option.label
+                              ? questions[currentQuestion].correct_answer.includes(option.label)
+                                ? 'bg-green-500 hover:bg-green-600 text-white'
+                                : 'bg-red-500 hover:bg-red-600 text-white'
+                              : 'bg-white hover:bg-indigo-50 text-gray-800 hover:text-indigo-700'
+                          }
+                        `}
                         variant="outline"
                         disabled={selectedAnswer !== null}
                       >
@@ -112,7 +117,11 @@ const Quiz = () => {
               <h2 className="text-3xl font-bold mb-4 text-indigo-700">クイズ終了！</h2>
               <p className="text-2xl mb-4 text-gray-700">あなたのスコア: <span className="font-bold text-indigo-600">{score} / {questions.length}</span></p>
               <Separator className="my-6" />
-              <Button onClick={restartQuiz} size="lg" className="mt-4 bg-indigo-600 hover:bg-indigo-700">
+              <Button 
+                onClick={restartQuiz} 
+                size="lg" 
+                className="mt-4 bg-indigo-600 hover:bg-indigo-700 transition-all duration-200 ease-in-out hover:scale-105"
+              >
                 もう一度挑戦する
               </Button>
             </motion.div>
