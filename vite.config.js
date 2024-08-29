@@ -10,6 +10,7 @@ export default defineConfig({
     port: "8080",
   },
   plugins: [react()],
+  base: 'quizwhiz-haven',
   resolve: {
     alias: [
       {
