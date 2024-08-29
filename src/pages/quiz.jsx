@@ -31,7 +31,7 @@ const Quiz = () => {
 
   useEffect(() => {
     setSelectedAnswers([]);
-    setIsMultipleChoice(questions[currentQuestion].correct_answer.length > 1);
+    setIsMultipleChoice(questions[currentQuestion].correct_answer.includes(','));
   }, [currentQuestion, questions]);
 
   const handleAnswerSelection = (selectedLabel) => {
@@ -50,7 +50,7 @@ const Quiz = () => {
 
   const submitAnswer = () => {
     setIsAnswerSubmitted(true);
-    const currentQuestionAnswers = questions[currentQuestion].correct_answer;
+    const currentQuestionAnswers = questions[currentQuestion].correct_answer.split(', ');
     const isCorrect = currentQuestionAnswers.length === selectedAnswers.length &&
       currentQuestionAnswers.every(answer => selectedAnswers.includes(answer));
 
