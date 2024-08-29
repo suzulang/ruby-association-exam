@@ -2,1238 +2,1309 @@
   "questions": [
     {
       "id": 1,
-      "content": "# Ruby技術者認定試験Silver模擬問題",
+      "content": "Rubyにおける真の値として正しいものをすべて選んでください。(2つ選択)",
+      "code": null,
+      "correct_answer": "A, B",
+      "explanation": "Rubyでは、false と nil 以外のすべての値は真として扱われます。空文字列(\"\")や0も真として扱われます。",
       "options": [
         {
-          "label": "A",
-          "content": "`\"\"`"
+          "content": "\"\"",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`0`"
+          "content": "0",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`false`"
+          "content": "false",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`nil`"
+          "content": "nil",
+          "label": "D"
         }
-      ],
-      "correct_answer": "A, B",
-      "explanation": "Rubyではすべてのオブェクトが条件分岐で使用するための論理値を持ちます。\n\n`false`と`nil`は論理的に偽として、それ以外のすべてのオブジェクトは論理的に真として扱われます。"
+      ]
     },
     {
       "id": 2,
-      "content": "Rubyの予約語として正しいものをすべて選んでください。(2つ選択)**",
+      "content": "Rubyの予約語として正しいものをすべて選んでください。(2つ選択)",
+      "code": null,
+      "correct_answer": "C, E",
+      "explanation": "Rubyの予約語には 'class' と 'true' が含まれます。'each'はEnumerableモジュールのメソッド、'rand'は組み込み関数、'send'はObjectクラスのメソッドであり、予約語ではありません。",
       "options": [
         {
-          "label": "A",
-          "content": "`each`"
+          "content": "each",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`rand`"
+          "content": "rand",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`class`"
+          "content": "class",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`send`"
+          "content": "send",
+          "label": "D"
         },
         {
-          "label": "E",
-          "content": "`true`"
+          "content": "true",
+          "label": "E"
         }
-      ],
-      "correct_answer": "C, E",
-      "explanation": "Ruby 3.1の予約語の一覧は以下のとおりです。\n\n![Ruby keywords](ruby-keywords.png)"
+      ]
     },
     {
       "id": 3,
-      "content": "Rubyの変数名として正しいものを選んでください。(1つ選択)**",
+      "content": "Rubyの変数名として正しいものを選んでください。(1つ選択)",
+      "code": null,
+      "correct_answer": "C",
+      "explanation": "Rubyの変数名は小文字またはアンダースコアで始まる必要があります。数字で始まる変数名や予約語は使用できません。'_9class'は有効な変数名です。",
       "options": [
         {
-          "label": "A",
-          "content": "`3y`"
+          "content": "3y",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`false`"
+          "content": "false",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`_9class`"
+          "content": "_9class",
+          "label": "C"
         },
         {
-          "label": "E",
-          "content": "`xyz$`"
+          "content": "xyz$",
+          "label": "D"
         }
-      ],
-      "correct_answer": "C",
-      "explanation": "Rubyのローカル変数名は小文字またはアンダースコアではじまり、アルファベット、数字、アンダースコア、非ASCII文字のみからなります。\n\n予約語を変数名として使用することはできません(例えば`class`という変数名は使用できません)が、予約語を含む変数名は許可されています(つまり`classy`や`_class`は有効な変数名です)。"
+      ]
     },
     {
       "id": 4,
-      "content": "以下の実行結果を出力するコードがあります。",
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(2つ選択)",
+      "code": "$code = \"CODE\"\n__(1)__\n\n[出力]\ni like writing CODE",
+      "correct_answer": "A, B",
+      "explanation": "Rubyでは、ダブルクォートで囲まれた文字列内で変数展開が可能です。'#{$code}'と'#$code'はどちらもグローバル変数$codeの値を展開します。シングルクォートでは変数展開は行われません。",
       "options": [
         {
-          "label": "A",
-          "content": "`puts \"i like writing #{$code}\"`"
+          "content": "puts \"i like writing #{$code}\"",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`puts \"i like writing #$code\"`"
+          "content": "puts \"i like writing #$code\"",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`puts 'i like writing #{$code}'`"
+          "content": "puts 'i like writing #{$code}'",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`puts 'i like writing #$code'`"
+          "content": "puts 'i like writing #$code'",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "A, B",
-      "explanation": "シングルクォートの文字列リテラルはシンプルで、文字のそのままの列を表現します。\n\nダブルクォートの文字列リテラルはより複雑ですが、Rubyの式の評価結果を文字列中に埋め込む式展開(`#{...}`)のような機能を提供します。\n\nグローバル変数の値を埋め込む場合は`#$`を省略記法として使用できます(同様にインスタンス変数の場合は`#@`を使用できます)。この省略記法はより一般的な`#{...}`記法に比べるとあまり使われていません。"
+      ]
     },
     {
       "id": 5,
-      "content": "以下のコードがあります。** ",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "num = 025\nputs num",
+      "correct_answer": "C",
+      "explanation": "Rubyでは、0で始まる整数リテラルは8進数として解釈されます。025は8進数で表現された数値で、10進数では21になります。",
       "options": [
         {
-          "label": "A",
-          "content": "`nil`"
+          "content": "nil",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`025`"
+          "content": "025",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`21`"
+          "content": "21",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`25`"
+          "content": "25",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "C",
-      "explanation": "整数リテラルの先頭の0は8進数表記を意味します。ただし、デフォルトでは10進数として出力が行われます。\n\n10進数以外での出力を行うためには、さまざまな書式化数値出力機能が提供されています(例: `Strign#%`、`Numeric#to_s(base)`、`Kernel#printf`)。"
+      ]
     },
     {
       "id": 6,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "x = \"Hello\"\ny = x.empty? ? 1 : 2\np y",
+      "correct_answer": "B",
+      "explanation": "三項演算子 condition ? true_value : false_value を使用しています。x.empty?は偽なので、yには2が代入されます。",
       "options": [
         {
-          "label": "A",
-          "content": "1"
+          "content": "1",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "2"
+          "content": "2",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "\"Hello\""
+          "content": "\"Hello\"",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "true"
+          "content": "true",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "三項演算子(`cond ? expr1 : expr2`)は`if/else`の省略形で、`cond`が真の場合`expr1`を、偽の場合`expr2`を返します。1行に収まるような短い文の記述に向いています。"
+      ]
     },
     {
       "id": 7,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "amount = 120\n\nsize = case amount\n  when 1..120; \"S\"\n  when 120..170; \"M\"\n  when 170..200; \"L\"\n  else \"XL\"\nend\n\np size",
+      "correct_answer": "A",
+      "explanation": "case文では、最初にマッチした条件が実行されます。120は1..120の範囲に含まれるため、sizeには\"S\"が代入されます。",
       "options": [
         {
-          "label": "A",
-          "content": "`\"S\"`"
+          "content": "\"S\"",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`\"M\"`"
+          "content": "\"M\"",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`\"L\"`"
+          "content": "\"L\"",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`\"XL\"`"
+          "content": "\"XL\"",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "A",
-      "explanation": "`case`文は`when`の条件にマッチする最初の分岐を実行します。\n\nRubyの範囲リテラル`x..y`は、`y`の値を含みます。\n\nしたがって、`1..120`と`120..170`の両方が`120`を含み、`when 1..120`の分岐が最初にマッチして実行されます。"
+      ]
     },
     {
       "id": 8,
-      "content": "以下のコードがあります。**",
-      "options": [
-
-      ],
-      "code": "```\n```\n```\n```\n```\n```",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "item = \"apple\"\n\n[\"banana\", \"carrot\", \"daikon\"].each do |item|\n  puts item\nend\n\nputs item",
       "correct_answer": "D",
-      "explanation": "ブロックでは外側のスコープのローカル変数にアクセスすることができますが、ブロックパラメータ自体は常にブロックローカルです。これはブロックパラメータの名前が外側のローカル変数と同じ場合、ブロック内ではブロックローカル変数が参照されることを意味します。これによって、変数名が衝突した場合に外側のローカル変数を誤って変更することが防がれます。\n\n外側のローカル変数と同名のブロックパラメータを定義することはアンチパターンと考えられ、プログラムの間違いのサインかもしれません。この問題を発見するには、`ruby`を`-w`オプション付きで実行し、`warning: shadowing outer local variable - item`のような警告を表示させるようにします。"
+      "explanation": "ブロック内のitemはブロックローカル変数であり、外部のitem変数とは別物です。ブロック内でitemが上書きされても、ブロック外のitem変数の値は変わりません。",
+      "options": [
+        {
+          "content": "文法エラーが発生する",
+          "label": "A"
+        },
+        {
+          "content": "例外が発生する",
+          "label": "B"
+        },
+        {
+          "content": "banana\ncarrot\ndaikon\ndaikon",
+          "label": "C"
+        },
+        {
+          "content": "banana\ncarrot\ndaikon\napple",
+          "label": "D"
+        }
+      ]
     },
     {
       "id": 9,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "x = 0\n\n4.times do |i|\n  x += i\nend\n\np x",
+      "correct_answer": "C",
+      "explanation": "times メソッドは0から3までの数値でブロックを4回実行します。xには0, 1, 2, 3が順に加算されるため、最終的な値は6になります。",
       "options": [
         {
-          "label": "A",
-          "content": "`0`"
+          "content": "0",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`4`"
+          "content": "4",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`6`"
+          "content": "6",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "文法エラーが発生する"
+          "content": "文法エラーが発生する",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "C",
-      "explanation": "`Integer#times`メソッドは0から指定された値より1つ小さい整数までの値を順番にブロックパラメータとして渡します。\n\nブロックパラメータと同名の外側のローカル変数は参照できません(A8参照)が、他のローカル変数はアクセス・変更できます。これはRubyのブロックはクロージャであるためです。"
+      ]
     },
     {
       "id": 10,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "s = \"abcde\"\np s.each_char.map { |i|\n  i * 2\n}",
+      "correct_answer": "D",
+      "explanation": "each_charメソッドは文字列の各文字を順に返し、mapメソッドは各文字を2回繰り返した新しい配列を生成します。",
       "options": [
         {
-          "label": "A",
-          "content": "`[97, 98, 99, 100, 101]`"
+          "content": "[97, 98, 99, 100, 101]",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`[194, 196, 198, 200, 202]`"
+          "content": "[194, 196, 198, 200, 202]",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`[\"a\", \"b\", \"c\", \"d\", \"e\"]`"
+          "content": "[\"a\", \"b\", \"c\", \"d\", \"e\"]",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`[\"aa\", \"bb\", \"cc\", \"dd\", \"ee\"]`"
+          "content": "[\"aa\", \"bb\", \"cc\", \"dd\", \"ee\"]",
+          "label": "D"
         },
         {
-          "label": "E",
-          "content": "実行時にエラーになる"
+          "content": "実行時にエラーになる",
+          "label": "E"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "D",
-      "explanation": "[String#each_char](https://docs.ruby-lang.org/ja/3.1/class/String.html#I_EACH_CHAR)はレシーバのそれぞれの文字をyieldする[Enumerator](https://docs.ruby-lang.org/en/3.1/Enumerator.html)を返します。文字は1文字のも文字列で表現されることに注意してください。\n\n[Enumerable#map](https://docs.ruby-lang.org/ja/3.1/class/Enumerable.html#I_MAP) は与えられたブロックの値の配列を返します。\n\n`string * integer`は`string`を`integer`回コピーして連結した値を返します。\n\nしたがって、`s.each_char.map { |i| i * 2}`の評価結果は`[\"aa\", \"bb\", \"cc\", \"dd\", \"ee\"]`になります。"
+      ]
     },
     {
       "id": 11,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "p \"cocoa\".chars.tally",
+      "correct_answer": "C",
+      "explanation": "charsメソッドは文字列を文字の配列に分解し、tallyメソッドは各要素の出現回数をカウントしてハッシュを返します。",
       "options": [
         {
-          "label": "A",
-          "content": "`{99=>2, 111=>2, 97=>1}`"
+          "content": "{99=>2, 111=>2, 97=>1}",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`{?c=>2, ?o=>2, ?a=>1}`"
+          "content": "{?c=>2, ?o=>2, ?a=>1}",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`{\"c\"=>2, \"o\"=>2, \"a\"=>1}`"
+          "content": "{\"c\"=>2, \"o\"=>2, \"a\"=>1}",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "実行時にエラーになる"
+          "content": "実行時にエラーになる",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "C",
-      "explanation": "[String#chars](https://docs.ruby-lang.org/ja/3.1/class/String.html#I_CHARS)はレシーバのすべての文字の配列を返します。文字は1文字のも文字列で表現されることに注意してください。\n\n[Enumerable#tally](https://docs.ruby-lang.org/ja/3.1/class/Enumerable.html#I_TALLY)は値が同じ要素の数を含むハッシュを返します。\n\nしたがって、`\"cocoa\".chars.tally`の評価結果は`{\"c\"=>2, \"o\"=>2, \"a\"=>1}`になります。"
+      ]
     },
     {
       "id": 12,
-      "content": "以下の実行結果を出力するコードがあります。",
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(1つ選択)",
+      "code": "puts \"blah blah blah\".__(1)__(/blah/, \"yay\")\n\n[出力]\nyay yay yay",
+      "correct_answer": "B",
+      "explanation": "gsubメソッドは文字列内のすべてのマッチを置換します。他のメソッドは一部のマッチのみを置換するか、存在しないメソッドです。",
       "options": [
         {
-          "label": "A",
-          "content": "`sub`"
+          "content": "sub",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`gsub`"
+          "content": "gsub",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`replace`"
+          "content": "replace",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`replace_all`"
+          "content": "replace_all",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "[String#gsub](https://docs.ruby-lang.org/ja/3.1/class/String.html#I_GSUB)はパターンにマッチするすべての部分を置換した文字列を返します。\n\n\n[String#sub](https://docs.ruby-lang.org/ja/3.1/class/String.html#I_SUB)はパターンにマッチする最初の部分を置換した文字列を返します。\n\n[String#replace](https://docs.ruby-lang.org/ja/3.1/class/String.html#I_REPLACE) は与えられた文字列でレシーバの内容を置き換えます。\n\nStringに`#replace_all`メソッドはありません。"
+      ]
     },
     {
       "id": 13,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "s = \"pear\"\n\nif s.empty?\n  puts \"blank\"\nelsif s.length < 5\n  puts \"short\"\nelse\n  puts \"long\"\nend",
+      "correct_answer": "B",
+      "explanation": "文字列 \"pear\" の長さは4で、5未満です。したがって、2番目の条件が真となり、\"short\"が出力されます。",
       "options": [
         {
-          "label": "A",
-          "content": "blank"
+          "content": "blank",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "short"
+          "content": "short",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "long"
+          "content": "long",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "例外が発生する"
+          "content": "例外が発生する",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "`if/elsif/else`文では、最初に条件を満たした`if`または`elsif`の分岐が実行されます。いずれも条件を満たさない場合は、`else`の分岐が実行されます。"
+      ]
     },
     {
       "id": 14,
-      "content": "**Q14: 以下のコードがあります。**",
-      "options": [
-
-      ],
-      "code": "```\n```\n```\n```\n```\n```\n```\n```",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "[\"foo: abc\", \"bar: 100\"].each do |i|\n  p i.slice(/[0-9]+/)&.to_i\nend",
       "correct_answer": "B",
-      "explanation": "[String#slice](https://docs.ruby-lang.org/ja/3.1/class/String.html#I_SLICE)は最初にマッチした部分文字列を返します。マッチしなかった場合は`nil`を返します。\n`x&.foo`は`x`が`nil`でない場合`x`に対して`foo`メソッドを呼び出します。`x`が`nil`の場合、`x&.foo`はメソッドを呼び出さず、`nil`を返します。"
+      "explanation": "slice(/[0-9]+/)は数字の部分を抽出し、&.to_iで安全に整数に変換します。最初の文字列には数字がないのでnilが返され、2番目の文字列からは100が抽出されます。",
+      "options": [
+        {
+          "content": "0\n100",
+          "label": "A"
+        },
+        {
+          "content": "nil\n100",
+          "label": "B"
+        },
+        {
+          "content": "false\n100",
+          "label": "C"
+        },
+        {
+          "content": "文法エラーが発生する",
+          "label": "D"
+        },
+        {
+          "content": "実行時にエラーになる",
+          "label": "E"
+        }
+      ]
     },
     {
       "id": 15,
-      "content": "**Q15: 以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "def foo(x: 1, y: 2, z: 3)\n  p [x, y, z]\nend\n\nfoo(y: 4, z: 5)",
+      "correct_answer": "B",
+      "explanation": "キーワード引数のデフォルト値は、明示的に指定されない限り使用されます。この場合、xはデフォルト値の1が使用され、yとzは指定された値が使用されます。",
       "options": [
         {
-          "label": "A",
-          "content": "`[1, 2, 3]`"
+          "content": "[1, 2, 3]",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`[1, 4, 5]`"
+          "content": "[1, 4, 5]",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "文法エラーが発生する"
+          "content": "文法エラーが発生する",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "実行時にエラーになる"
+          "content": "実行時にエラーになる",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "キーワード引数が与えられなかった場合、メソッド定義のデフォルト値が使用されます。"
+      ]
     },
     {
       "id": 16,
-      "content": "**Q16: 以下の実行結果を出力するコードがあります。",
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(1つ選択)",
+      "code": "def foo(x:, y:, z:)\n  p [x, y, z]\nend\n\nh = {x: 1, y: 2, z: 3}\n__(1)__\n[出力]\n[1, 2, 3]",
+      "correct_answer": "B",
+      "explanation": "**演算子はハッシュをキーワード引数に展開します。これにより、ハッシュのキーと値がメソッドの引数として渡されます。",
       "options": [
         {
-          "label": "A",
-          "content": "`foo(*h)`"
+          "content": "foo(*h)",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`foo(**h)`"
+          "content": "foo(**h)",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`foo(&h)`"
+          "content": "foo(&h)",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`foo(^h)`"
+          "content": "foo(^h)",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "`**` はHashをキーワード引数に変換します。"
+      ]
     },
     {
       "id": 17,
-      "content": "\"Ruby\"または\"ruby\"のいずれかの文字列のみにマッチする正規表現をすべて選択してください。(2つ選択)**",
+      "content": "\"Ruby\"または\"ruby\"のいずれかの文字列のみにマッチする正規表現をすべて選択してください。(2つ選択)",
+      "code": null,
+      "correct_answer": "A, C",
+      "explanation": "\\A は文字列の先頭、\\z は文字列の末尾にマッチします。[Rr] は R または r にマッチします。したがって、A と C の正規表現が条件を満たします。",
       "options": [
         {
-          "label": "A",
-          "content": "`/\\A[Rr]uby\\z/`"
+          "content": "/\\A[Rr]uby\\z/",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`/\\ARuby|ruby\\z/`"
+          "content": "/\\ARuby|ruby\\z/",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`/\\A[Rr][u][b][y]\\z/`"
+          "content": "/\\A[Rr][u][b][y]\\z/",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`/\\AR|ruby\\z/`"
+          "content": "/\\AR|ruby\\z/",
+          "label": "D"
         }
-      ],
-      "correct_answer": "A, C",
-      "explanation": "文字クラス(`[...]`)はブラケット内のいずれかの文字にマッチします。\n\n選択(`...|...`)は複数の部分式のいずれかにマッチします。\n\n`\\A`アンカーは文字列の先頭に、`\\z`アンカーは文字列の末尾にマッチします。\n\n(b)が正解でないのは、(b)の部分式は`\\ARuby`と`ruby\\z`であり、`Ruby123`のような文字列にもマッチしてしまうためです。"
+      ]
     },
     {
       "id": 18,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "MSG = 42\nMSG += 5\np MSG",
+      "correct_answer": "D",
+      "explanation": "Rubyでは定数を再代入することができますが、警告が発生します。この場合、MSGは47に変更されますが、警告メッセージも表示されます。",
       "options": [
         {
-          "label": "A",
-          "content": "警告なしで`47`が表示される。"
+          "content": "警告なしで47が表示される。",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "MSGは定数なのでエラーが発生する。"
+          "content": "MSGは定数なのでエラーが発生する。",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "MSGは定数なので`42`が表示される。"
+          "content": "MSGは定数なので42が表示される。",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "MSGは定数なので警告が表示されるが、`47`が表示される。"
+          "content": "MSGは定数なので警告が表示されるが、47が表示される。",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "D",
-      "explanation": "定数は再定義できますが、通常あまり好ましくないため、警告が表示されます。\n\nRubyでは定数はモジュールやクラスの名前にも使用されるため、定数の再定義に関する警告は意図しない名前の衝突を防ぐために有用です。"
+      ]
     },
     {
       "id": 19,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "MSG = \"hello\"\nMSG.upcase!\np MSG",
+      "correct_answer": "B",
+      "explanation": "upcase!メソッドは文字列自体を変更します。定数に代入されたオブジェクトの内容を変更することは可能で、警告は発生しません。",
       "options": [
         {
-          "label": "A",
-          "content": "MSGは定数なのでエラーが発生する。"
+          "content": "MSGは定数なのでエラーが発生する。",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "警告なしで`HELLO`が表示される。"
+          "content": "警告なしでHELLOが表示される。",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "MSGは定数なので警告が表示されるが、`HELLO`が表示される。"
+          "content": "MSGは定数なので警告が表示されるが、HELLOが表示される。",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "MSGは定数なので`hello`が表示される。"
+          "content": "MSGは定数なのでhelloが表示される。",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "定数は再定義されず、定数から参照されるオブジェクトの内容が変更されているだけなので、警告は表示されません。\n\n慣習的に定数から参照されるオブジェクトは変更されないものとして扱われますが、その慣習があてはまらないレアケースもあります。"
+      ]
     },
     {
       "id": 20,
-      "content": "以下の説明のうち正しいものをすべて選択してください。(2つ選択)**",
+      "content": "以下の説明のうち正しいものをすべて選択してください。(2つ選択)",
+      "code": null,
+      "correct_answer": "B, E",
+      "explanation": "Rubyの変数名規則では、グローバル変数は$で始まり、定数は大文字で始まります。ローカル変数は小文字かアンダースコアで始まりますが、長さの制限はありません。",
       "options": [
         {
-          "label": "A",
-          "content": "ローカル変数は小文字ではじまり、2文字以上の長さである。"
+          "content": "ローカル変数は小文字ではじまり、2文字以上の長さである。",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "グローバル変数は$ではじまる。"
+          "content": "グローバル変数は$ではじまる。",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "インスタンス変数は*ではじまる。"
+          "content": "インスタンス変数は*ではじまる。",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "クラス変数は$ではじまる。"
+          "content": "クラス変数は$ではじまる。",
+          "label": "D"
         },
         {
-          "label": "E",
-          "content": "定数は大文字ではじまる。"
+          "content": "定数は大文字ではじまる。",
+          "label": "E"
         }
-      ],
-      "correct_answer": "B, E",
-      "explanation": "Rubyの変数名についてのルールは以下のとおりです。\n\n- グローバル変数は`$`ではじまります。\n- クラス変数は`@@`ではじまります。\n- インスタンス変数は`@`ではじまります。\n- ローカル変数は小文字またはアンダースコアではじまります。\n- 残りの文字はアルファベット、数字、アンダースコア、非ASCII文字に限定されます。"
+      ]
     },
     {
       "id": 21,
-      "content": "以下のコードがあります。**",
-      "options": [
-
-      ],
-      "code": "```\n```\n```\n```\n```\n```\n```\n```\n```\n```",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "x = [1,2,3,4,5,6,7,8]\ny = x\nx.reject! { |e| e.even? }\np x\np y",
       "correct_answer": "C",
-      "explanation": "この例では、`x`と`y`は両方とも同じ配列オブジェクトを参照します。\n\n`Array#reject!`はレシーバを変更するため、両方の変数から参照される一つの配列が変更が変更されるということを意味します。"
+      "explanation": "reject!メソッドは元の配列を変更します。yはxと同じオブジェクトを参照しているため、xの変更がyにも反映されます。結果として、両方の変数が奇数のみの配列を指すことになります。",
+      "options": [
+        {
+          "content": "[1, 3, 5, 7]\n[1, 2, 3, 4, 5, 6, 7, 8]",
+          "label": "A"
+        },
+        {
+          "content": "[1, 2, 3, 4, 5, 6, 7, 8]\n[1, 2, 3, 4, 5, 6, 7, 8]",
+          "label": "B"
+        },
+        {
+          "content": "[1, 3, 5, 7]\n[1, 3, 5, 7]",
+          "label": "C"
+        },
+        {
+          "content": "[1, 3, 5, 7]\n[2, 4, 6, 8]",
+          "label": "D"
+        }
+      ]
     },
     {
       "id": 22,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "a = [ 2, 4, 6, 8, 10 ]\na.shift\na.pop\na.push(12)\np a",
+      "correct_answer": "C",
+      "explanation": "shiftメソッドは配列の先頭要素を削除し、popメソッドは末尾要素を削除します。pushメソッドは末尾に新しい要素を追加します。したがって、2が削除され、10が削除され、12が追加されます。",
       "options": [
         {
-          "label": "A",
-          "content": "`[2, 4, 6, 8, 10, 12]`"
+          "content": "[2, 4, 6, 8, 10, 12]",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`[2, 4, 6, 8, 10]`"
+          "content": "[2, 4, 6, 8, 10]",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`[4, 6, 8, 12]`"
+          "content": "[4, 6, 8, 12]",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`[4, 6, 8]`"
+          "content": "[4, 6, 8]",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "C",
-      "explanation": "以下のような配列操作があります。\n\n- `shift`は配列の最初の要素を削除し、その要素を返します。\n- `pop`は配列の最後の要素を削除し、その要素を返します。\n- `push`は配列の末尾に指定された要素を追加します。"
+      ]
     },
     {
       "id": 23,
-      "content": "以下の実行結果を出力するコードがあります。",
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(1つ選択)",
+      "code": "x = true\nx __(1)__ exit(1)\nputs(\"succeeded!\")\n\n[出力]\nsucceeded!",
+      "correct_answer": "B",
+      "explanation": "||演算子は左辺が真の場合、右辺を評価しません（短絡評価）。xがtrueなので、exit(1)は実行されず、「succeeded!」が出力されます。",
       "options": [
         {
-          "label": "A",
-          "content": "`|`"
+          "content": "|",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`||`"
+          "content": "||",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`&`"
+          "content": "&",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`&&`"
+          "content": "&&",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "論理演算子`||`と`&&`は短絡評価され、必要な場合だけ右辺が評価されます。\n\n真理値オブジェクトのために`|`と`&`が提供されており、これらは短絡評価を行わず、常に右辺が評価されます。\n\n`||`と`&&`はすべてのオブジェクトに対して使用できますが、`|`と`&`は実装されていないオブジェクトもあることに注意してください。"
+      ]
     },
     {
       "id": 24,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "m = true\nm or n = true\np n",
+      "correct_answer": "C",
+      "explanation": "orは||よりも優先順位が低いため、この式は「m or (n = true)」と解釈されます。mがtrueなので、(n = true)は評価されません。したがって、nは初期化されずnilのままです。",
       "options": [
         {
-          "label": "A",
-          "content": "`true`"
+          "content": "true",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`false`"
+          "content": "false",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`nil`"
+          "content": "nil",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "文法エラーが発生する"
+          "content": "文法エラーが発生する",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "C",
-      "explanation": "`or`演算子は短絡評価され`n = true`という式は実行されませんが、ローカル変数`n`は静的に宣言されます。したがって、変数は存在しますが、その値は`nil`です。"
+      ]
     },
     {
       "id": 25,
-      "content": "以下の実行結果を出力するコードがあります。",
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(2つ選択)",
+      "code": "x = [ 9, 7, 5, 3, 1 ]\np __(1)__\n\n[出力]\n[7, 5, 3]",
+      "correct_answer": "A, D",
+      "explanation": "x[1, 3]は1番目のインデックスから3つの要素を取り出します。x[-4..-2]は末尾から4番目から2番目までの要素を取り出します。どちらも[7, 5, 3]という結果になります。",
       "options": [
         {
-          "label": "A",
-          "content": "`x[1, 3]`"
+          "content": "x[1, 3]",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`x[1..-1]`"
+          "content": "x[1..-1]",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`x[-3..-1]`"
+          "content": "x[-3..-1]",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`x[-4..-2]`"
+          "content": "x[-4..-2]",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "A, D",
-      "explanation": "この問題では部分配列を指定する二つの異なる方法を示しています。\n\n一つのアプローチは二つの整数を使用する方法、つまり`x[1,3]`のような書き方で、これはインデックス`1`からはじまる長さ`3`の部分配列を意味します。\n\nAnother approach is to use a range, which generates a subarray based the index values within that range.\nもう一つのアプローチはRangeオブジェクトを使用する方法で、指定された範囲に含まれるインデックスの値にもとづいた部分配列を生成します。\n\n範囲を使うシンプルな形式は`x[1..3]`のようなもので、インデックス`1`ではじまり`3`で終わる部分配列を返します。\n\nしかし、Rubyでは負のインデックスも許可されており、配列の先頭からではなく末尾からのインデックスとして使用されます。\n\nしたがって、`x[-4..-2]`は配列の末尾から4番目から末尾から2番目までの部分配列を返します。\n\nインデックスの意味を明確にするため、この問題の配列の各要素に対応するインデックスの値を以下に示します。\n\n```\n x  [ 9,   7,   5,    3,    1]\n i    0    1    2     3     4\n-i   -5   -4   -3    -2    -1\n```"
+      ]
     },
     {
       "id": 26,
-      "content": "以下の実行結果を出力するコードがあります。",
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(2つ選択)",
+      "code": "ary = [ 1, 2, 3, 4, 5 ]\np ary.__(1)__ { |i| i.odd? }\n\n[出力]\n[1, 3, 5]",
+      "correct_answer": "B, D",
+      "explanation": "selectとfilterは同じメソッドで、ブロックの条件を満たす要素を選択します。collectとmapは各要素を変換するメソッドで、この場合は適切ではありません。",
       "options": [
         {
-          "label": "A",
-          "content": "`collect`"
+          "content": "collect",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`select`"
+          "content": "select",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`map`"
+          "content": "map",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`filter`"
+          "content": "filter",
+          "label": "D"
         },
         {
-          "label": "E",
-          "content": "`filter_map`"
+          "content": "filter_map",
+          "label": "E"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B, D",
-      "explanation": "`Array#select`と`Array#filter`は与えられたブロックが真の値を返す要素の配列を返します。"
+      ]
     },
     {
       "id": 27,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "puts \"42A7\".to_i",
+      "correct_answer": "A",
+      "explanation": "to_iメソッドは文字列の先頭から数値に変換できる部分のみを整数に変換します。'A'以降は無視されるため、結果は42になります。",
       "options": [
         {
-          "label": "A",
-          "content": "42"
+          "content": "42",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "42A7"
+          "content": "42A7",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "17063"
+          "content": "17063",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "実行時にエラーになる"
+          "content": "実行時にエラーになる",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "A",
-      "explanation": "`String#to_i`は先頭の文字から整数としての解析を試み、指定された基数で有効な数字ではなくなるまで解析を続けます。文字列が有効な数字ではじまらない場合、`0`が返されます。\n\nデフォルトでは10進数として解析されますが、他の基数(`2`から`36`まで)をパラメータで指定することができます。\n\n`A`は10進数の一部として有効でないため`\"42A7\".to_i`は`42`を返しますが、`\"42A7\".to_i(16)`は16進数`0x42A7`の値(10進数では`17063`)を返すことに注意してください。"
+      ]
     },
     {
       "id": 28,
-      "content": "次のメソッドのうち`:c`がハッシュのキーとして存在するかどうかを「返さない」ものを選択してください。(1つ選択)**",
+      "content": "次のメソッドのうち`:c`がハッシュのキーとして存在するかどうかを「返さない」ものを選択してください。(1つ選択)",
+      "code": "h = {a: 2, b: 4, c: 6, d: 8, e: 10}",
+      "correct_answer": "B",
+      "explanation": "has_key?, include?, key?, member?はすべてハッシュにキーが存在するかを確認するメソッドです。contain?というメソッドはHashクラスに存在しません。",
       "options": [
         {
-          "label": "A",
-          "content": "`p h.has_key?(:c)`"
+          "content": "p h.has_key?(:c)",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`p h.contain?(:c)`"
+          "content": "p h.contain?(:c)",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`p h.include?(:c)`"
+          "content": "p h.include?(:c)",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`p h.key?(:c)`"
+          "content": "p h.key?(:c)",
+          "label": "D"
         },
         {
-          "label": "E",
-          "content": "`p h.member?(:c)`"
+          "content": "p h.member?(:c)",
+          "label": "E"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "`has_key?`、`include?`、`key?`、`member?`はすべて同じメソッドの別名で、与えられたキーがハッシュに存在する場合`true`を、存在しない場合`false`を返します。\n\n`Hash`に`contain?`メソッドはありません。"
+      ]
     },
     {
       "id": 29,
-      "content": "\"以下の実行結果を出力するコードがあります。",
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(2つ選択)",
+      "code": "a = [120, 40, 20, 80, 160, 60, 180]\na.__(1)__\np a\n\n[出力]\n[120, 80, 160, 180]",
+      "correct_answer": "A, E",
+      "explanation": "reject!とdelete_ifは条件に一致する要素を削除します。reject!は変更がない場合にnilを返しますが、delete_ifは常に元の配列を返します。slice!とdelete_if!は存在しないメソッドです。",
       "options": [
         {
-          "label": "A",
-          "content": "`reject! {|i| i < 80}`"
+          "content": "reject! {|i| i < 80}",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`slice {|i| i < 80 }`"
+          "content": "slice {|i| i < 80 }",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`slice! {|i| i < 80}`"
+          "content": "slice! {|i| i < 80}",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`delete_if! {|i| i < 80}`"
+          "content": "delete_if! {|i| i < 80}",
+          "label": "D"
         },
         {
-          "label": "E",
-          "content": "`delete_if {|i| i < 80}`"
+          "content": "delete_if {|i| i < 80}",
+          "label": "E"
         },
         {
-          "label": "F",
-          "content": "`reject {|i| i < 80}`"
+          "content": "reject {|i| i < 80}",
+          "label": "F"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "A, E",
-      "explanation": "配列の操作に関する注意事項です。\n\n- `reject!`に加えて`reject`もあり、元の配列を変更する代りに新しい配列を返します。\n- `delete_if`の非破壊的バージョンはないため、`delete_if!`というメソッドはありません。Rubyでは似た機能のうち片方がより危険である場合にだけメソッド名の末尾に`!`を付けます。\n- `Array#slice`は`Array#[]`の別名で、条件によるフィルタリングを行うのではなく、インデックスにより特定の要素や部分配列を返します。`Array#slice`はブロックを取りません。"
+      ]
     },
     {
       "id": 30,
-      "content": "以下の実行結果を出力するコードがあります。",
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(1つ選択)",
+      "code": "p [\"apple\", \"banana\"] __(1)__ [\"banana\", \"carrot\"]\n\n[出力]\n[\"apple\", \"banana\", \"carrot\"]",
+      "correct_answer": "C",
+      "explanation": "|演算子は配列の和集合を返します。重複する要素は1つだけ残り、元の順序が保持されます。concatは配列を結合しますが重複を除去しません。&は積集合を返します。",
       "options": [
         {
-          "label": "A",
-          "content": "`.concat`"
+          "content": ".concat",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`&`"
+          "content": "&",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`|`"
+          "content": "|",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`||`"
+          "content": "||",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "C",
-      "explanation": "`|`演算子は和集合に相当します。二つの配列を重複を除去して結合し、元の順序を保持した新しい配列を返します。"
+      ]
     },
     {
       "id": 31,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "p %i(x1 x2 x3)",
+      "correct_answer": "D",
+      "explanation": "%i記法は、スペースで区切られたシンボルの配列を生成します。各要素は自動的にシンボルに変換されます。",
       "options": [
         {
-          "label": "A",
-          "content": "`\"x1 x2 x3\"`"
+          "content": "\"x1 x2 x3\"",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`[1, 2, 3]`"
+          "content": "[1, 2, 3]",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`[\"x1\", \"x2\", \"x3\"]`"
+          "content": "[\"x1\", \"x2\", \"x3\"]",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`[:x1, :x2, :x3]`"
+          "content": "[:x1, :x2, :x3]",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "D",
-      "explanation": "`%i(...)`は式展開を行わずにシンボルの配列を返します。シンボルは空白で区切られます。\n\n詳細は[%記法のドキュメント](https://docs.ruby-lang.org/ja/3.1/doc/spec=2fliteral.html#percent)を参照してください。"
+      ]
     },
     {
       "id": 32,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "class SomeError < StandardError; end\nclass SomeOtherError < SomeError; end\n\ndef meth1\n  raise SomeOtherError.new(\"error\")\nend\n\nbegin\n  meth1\nrescue SomeError\n  print \"SomeError\"\nrescue SomeOtherError\n  print \"SomeOtherError\"\nend",
+      "correct_answer": "B",
+      "explanation": "例外処理は最初にマッチしたrescue節で捕捉されます。SomeOtherErrorはSomeErrorのサブクラスなので、最初のrescue SomeErrorで捕捉されます。",
       "options": [
         {
-          "label": "A",
-          "content": "A syntax error"
+          "content": "A syntax error",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`SomeError`"
+          "content": "SomeError",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`SomeErrorSomeOtherError`"
+          "content": "SomeErrorSomeOtherError",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`SomeOtherError`"
+          "content": "SomeOtherError",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "`begin/rescue/end`では最初に該当した`rescue`節が実行されます。\n\n`SomeOtherError`は`SomeError`のサブクラスなので、`rescue SomeError`節が該当して実行されます。\n\n現実のアプリケーションでは、一般的なエラーよりも特定的なエラーから順に`rescue`するのがよい習慣です(例えば、`rescue StandardError`は最後に記述します)。"
+      ]
     },
     {
       "id": 33,
-      "content": "以下のコードがあります。**",
-      "options": [
-
-      ],
-      "code": "```\n```\n```\n```\n```\n```\n```\n```\n```\n```",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "begin\n  ans = 100/0\n  puts ans\nrescue ZeroDivisionError\n  puts \"Error: ZeroDivisionError\"\n  exit 1\nensure\n  puts \"DONE!\"\nend",
       "correct_answer": "C",
-      "explanation": "0による除算で`ZeroDivisionError`が発生します。\n\n`ZeroDivisionError`が補足され、メッセージが出力されます。`exit(1)`はエラーコードとともにプログラムの実行を終了します。\n\nしかし、`begin...end`に`ensure`節があるため、インタープリタの終了前に`ensure`節が実行されます。\n\n`ensure`節は、例外が発生したりRubyが終了した時にも後始末を行うことができるため、便利です。ファイルハンドルやデータベース接続のクローズなどに利用されます。"
+      "explanation": "ZeroDivisionErrorが発生し、rescue節が実行されます。exit 1で終了しますが、その前にensure節が必ず実行されます。したがって、\"Error: ZeroDivisionError\"と\"DONE!\"が出力されます。",
+      "options": [
+        {
+          "content": "0\nDONE!",
+          "label": "A"
+        },
+        {
+          "content": "Error: ZeroDivisionError",
+          "label": "B"
+        },
+        {
+          "content": "Error: ZeroDivisionError\nDONE!",
+          "label": "C"
+        },
+        {
+          "content": "Error: ZeroDivisionError\n0",
+          "label": "D"
+        }
+      ]
     },
     {
       "id": 34,
-      "content": "Rubyのクラスの説明として正しいものを選択してください。(1つ選択)**",
+      "content": "Rubyのクラスの説明として正しいものを選択してください。(1つ選択)",
+      "code": "クラスのスーパークラスを明示的に指定しなかった場合、",
+      "correct_answer": "E",
+      "explanation": "Rubyでは、クラスのスーパークラスを明示的に指定しない場合、デフォルトでObjectクラスがスーパークラスになります。これにより、すべてのクラスがObjectクラスのメソッドを継承します。",
       "options": [
         {
-          "label": "A",
-          "content": "例外`UndefinedParentClassError`が発生する"
+          "content": "例外UndefinedParentClassErrorが発生する",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "文法エラーが発生する"
+          "content": "文法エラーが発生する",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`Module`クラスがスーパークラスになる"
+          "content": "Moduleクラスがスーパークラスになる",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "スーパークラスのないクラスが作成される"
+          "content": "スーパークラスのないクラスが作成される",
+          "label": "D"
         },
         {
-          "label": "E",
-          "content": "`Object`クラスがスーパークラスになる"
+          "content": "Objectクラスがスーパークラスになる",
+          "label": "E"
         }
-      ],
-      "correct_answer": "E",
-      "explanation": "デフォルトでは、明示的にスーパークラスを指定してもしなくても、すべてのクラスは`Object`を継承します。\n\n`Object`を継承しないクラス階層を構築するには、代りに`BasicObject`を継承することができます。`BasicObject`は非常に少ない機能しか備えておらず、通常のユースケースでは`BasicObject`を直接継承する必要はありません。"
+      ]
     },
     {
       "id": 35,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "class Object\n  def moo\n    puts \"MOO!\"\n  end\nend\n\n\"Cow\".moo",
+      "correct_answer": "C",
+      "explanation": "Objectクラスにmooメソッドを追加すると、すべてのオブジェクトがそのメソッドを継承します。したがって、文字列オブジェクト\"Cow\"に対してmooメソッドを呼び出すと、\"MOO!\"が出力されます。",
       "options": [
         {
-          "label": "A",
-          "content": "何も出力されない"
+          "content": "何も出力されない",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "実行時にエラーになる"
+          "content": "実行時にエラーになる",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`MOO!`"
+          "content": "MOO!",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`nil`"
+          "content": "nil",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "C",
-      "explanation": "クラス定義はいつでも再オープンして更新することができます。`Object`のような組み込みクラスの場合も同様です。\n\nすべての組み込みクラス(ただし`BasicObject`は除く)は`Object`を継承しているため、`Object`にメソッドを追加するとすべてのオブジェクトで利用できます。"
+      ]
     },
     {
       "id": 36,
-      "content": "以下の実行結果を出力するコードがあります。",
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(1つ選択)",
+      "code": "class Shouter\n  def __(1)__(message)\n    @message = message\n  end\n\n  def greet\n    puts @message.upcase\n  end\nend\n\ng = Shouter.new(\"Hello, world!\")\ng.greet\n\n[出力]\nHELLO, WORLD!",
+      "correct_answer": "C",
+      "explanation": "initializeメソッドは、Rubyのクラスのコンストラクタとして機能します。newメソッドが呼び出されたときに自動的に実行され、オブジェクトの初期化を行います。",
       "options": [
         {
-          "label": "A",
-          "content": "`Shouter`"
+          "content": "Shouter",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`new`"
+          "content": "new",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`initialize`"
+          "content": "initialize",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`__init__`"
+          "content": "__init__",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "C",
-      "explanation": "クラスに対して`new`メソッドが呼ばれると、そのクラスのインスタンスが生成され、そのインスタンスに対して`initialize`が呼ばれます。この動作によりインスタンス生成時の初期化が可能になっています。"
+      ]
     },
     {
       "id": 37,
-      "content": "以下の実行結果を出力するコードがあります。",
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(1つ選択)",
+      "code": "class Shouter\n  def initialize(message)\n    @message = message\n  end\n\n  def greet\n    puts @message.upcase\n  end\nend\n\ng = __(1)__(\"Hello, world!\")\ng.greet\n\n[出力]\nHELLO, WORLD!",
+      "correct_answer": "D",
+      "explanation": "Rubyでは、新しいオブジェクトを作成するためにクラス名の後に.newを付けて呼び出します。これによりinitializeメソッドが呼び出され、オブジェクトが初期化されます。",
       "options": [
         {
-          "label": "A",
-          "content": "`Shouter`"
+          "content": "Shouter",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`#Shouter`"
+          "content": "#Shouter",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`new Shouter`"
+          "content": "new Shouter",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`Shouter.new`"
+          "content": "Shouter.new",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "D",
-      "explanation": "`Class`に定義されている`new`メソッドは新しいインスタンスの作成に使用されます。"
+      ]
     },
     {
       "id": 38,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "class Foo\n  attr_reader :var\n  def initialize\n    @var = \"apple\"\n  end\nend\n\nclass Bar < Foo\n  def initialize\n    @var = \"banana\"\n    super\n  end\nend\n\nbar = Bar.new\nputs bar.var",
+      "correct_answer": "A",
+      "explanation": "Barクラスのinitializeメソッドで@varに\"banana\"を代入した後、superを呼び出しています。superはFooクラスのinitializeメソッドを呼び出し、@varを\"apple\"で上書きします。したがって、最終的な@varの値は\"apple\"になります。",
       "options": [
         {
-          "label": "A",
-          "content": "apple"
+          "content": "apple",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "banana"
+          "content": "banana",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "何も出力されない"
+          "content": "何も出力されない",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "実行時にエラーになる"
+          "content": "実行時にエラーになる",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "A",
-      "explanation": "予約語`super`は継承ツリーの祖先の同名のメソッドを呼びます。\n\nこの例では、`Bar.new`によって`Bar#initialize`が呼ばれ、`@var = \"banana\"`の代入が実行されます。しかしその直後に`super`によって`Foo#initialize`が呼ばれて`@var = apple\"`の代入が実行されるため、最終的に`apple`が出力されます。"
+      ]
     },
     {
       "id": 39,
-      "content": "以下の実行結果を出力するコードがあります。",
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(2つ選択)",
+      "code": "puts \"$foo$\".__(1)__(\"$\")\n\n[出力]\nfoo$",
+      "correct_answer": "C, D",
+      "explanation": "delete_prefixメソッドは文字列の先頭から指定された文字列を削除します。deleteメソッドは指定された文字をすべて削除します。この場合、どちらも先頭の$を削除し、期待される出力を生成します。",
       "options": [
         {
-          "label": "A",
-          "content": "`sub`"
+          "content": "sub",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`chop`"
+          "content": "chop",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`delete`"
+          "content": "delete",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`delete_prefix`"
+          "content": "delete_prefix",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "D",
-      "explanation": "[String#delete_prefix](https://docs.ruby-lang.org/ja/3.1/class/String.html#I_DELETE_PREFIX)は与えられた文字列を先頭から削除した文字列を返します。\n\n[String#delete](https://docs.ruby-lang.org/ja/3.1/class/String.html#I_DELETE)は引数で指定されたすべての文字を削除するため、`\"$foo$\".delete(\"$\")`の評価結果は`\"foo\"`になります。\n\n\n[String#sub](https://docs.ruby-lang.org/ja/3.1/class/String.html#I_SUB)は2つの引数を取り、[String#chop](https://docs.ruby-lang.org/ja/3.1/class/String.html#I_CHOP)は引数を取らないため、`sub(\"$\")`と`chop(\"$\")`はArgumentErrorになります。"
+      ]
     },
     {
       "id": 40,
-      "content": "以下の実行結果を出力するコードがあります。",
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(1つ選択)",
+      "code": "r = \"a\"..\"e\"\np r.__(1)__\n\n[出力]\n[\"a\", \"b\", \"c\", \"d\", \"e\"]",
+      "correct_answer": "C",
+      "explanation": "to_aメソッドは範囲オブジェクトを配列に変換します。これは、範囲内のすべての要素を含む配列を生成します。",
       "options": [
         {
-          "label": "A",
-          "content": "`array`"
+          "content": "array",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`to_ary`"
+          "content": "to_ary",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`to_a`"
+          "content": "to_a",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`to_array`"
+          "content": "to_array",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "C",
-      "explanation": "`to_a`という名前のメソッドは慣習的にオブジェクトを配列に変換するために使用され、Rubyのコレクションクラスで利用可能です。\n\nいくつかのオブジェクトでは`to_ary`も実装され、暗黙的な配列への変換に使用されます。例えば、`Array#flatten`はそれぞれの要素に対して`to_ary`の呼び出しを試みます。しかし、通常のユースケースでは`to_ary`はあまり使用されません。"
+      ]
     },
     {
       "id": 41,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "p [0,1,2,3,4,5].find {|x| x < 3}",
+      "correct_answer": "B",
+      "explanation": "findメソッド（detectメソッドの別名）は、ブロックが真を返す最初の要素を返します。この場合、0が最初に条件を満たす要素です。",
       "options": [
         {
-          "label": "A",
-          "content": "`[0, 1, 2]`"
+          "content": "[0, 1, 2]",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`0`"
+          "content": "0",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`[0, 1, 2, 3]`"
+          "content": "[0, 1, 2, 3]",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`true`"
+          "content": "true",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "`#find`メソッドは`Enumerable`モジュールに定義されており、ブロックの値が真になる最初の要素を返します。\n\n`Enumerable#find`には`Enumerable#detect`という別名があることに注意してください。"
+      ]
     },
     {
       "id": 42,
-      "content": "以下の実行結果を出力するコードがあります。",
+      "content": "以下の実行結果を出力するコードがあります。__(1)__に入る適切な記述を選択してください。(2つ選択)",
+      "code": "p [1,16,8,4,2].__(1)__\n\n[出力]\n[16, 8, 4, 2, 1]",
+      "correct_answer": "A, C",
+      "explanation": "sort_byメソッドを使用して降順にソートするには、各要素の負の値でソートします。また、sortメソッドで昇順にソートした後、reverseメソッドで逆順にすることでも同じ結果が得られます。",
       "options": [
         {
-          "label": "A",
-          "content": "`sort_by { |x| -x }`"
+          "content": "sort_by { |x| -x }",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`sort_reverse`"
+          "content": "sort_reverse",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`sort.reverse`"
+          "content": "sort.reverse",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`reverse.sort`"
+          "content": "reverse.sort",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "A, C",
-      "explanation": "`sort_by`メソッドはコレクションの要素に対してブロックの値を対応付け、ブロックの値の昇順で要素をソートします。\n\n`sort`メソッドは(ブロックがない場合)要素を昇順にソートします。ブロックを与えると要素をブロックで比較してソートすることができます。\n\n`sort_by`も`sort`もオブジェクトを`<=>`演算子で比較できることに依存しています。Rubyの数値クラスはすべて`<=>`演算子を実装していますが、自分は作成したクラスに定義することもできます。"
+      ]
     },
     {
       "id": 43,
-      "content": "配列を降順にソートするコードがあります。",
+      "content": "配列を降順にソートするコードがあります。__(1)__に入る適切な記述を選択してください。(2つ選択)",
+      "code": "ary = [2,4,8,1,16]\np ary.__(1)__\n\n[出力]\n[16, 8, 4, 2, 1]",
+      "correct_answer": "B, C",
+      "explanation": "sortメソッドにブロックを渡すことで、ソートの順序を制御できます。b <=> a とすることで降順になります。また、-i <=> -j も同様に降順のソートを実現します。",
       "options": [
         {
-          "label": "A",
-          "content": "`sort { |i,j| -i <= -j }`"
+          "content": "sort { |i,j| -i <= -j }",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`sort { |i,j| -i <=> -j }`"
+          "content": "sort { |i,j| -i <=> -j }",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`sort { |i,j| i >= j }`"
+          "content": "sort { |i,j| j <=> i }",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`sort{ |i,j| i <=> j }`"
+          "content": "sort{ |i,j| i <=> j }",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "`sort`メソッドにブロックを与えると、要素をブロックで比較してソートします。\n\nブロックでは二つの要素の比較を行い、最初の要素の順序が前の場合は負の値を、二つの要素の順序が同じ場合は0を、最初の要素の順序が後の場合は正の値を返す必要があります。\n\nRubyの数値クラスの`<=>`の動作は、この挙動を自動的に提供します。\n\n```\n>> 3 <=> 1\n=> 1\n>> 3 <=> 3\n=> 0\n>> 3 <=> 5\n=> -1\n```\n\n`<=>`(UFO演算子)は意味のあるソート順序をもつ任意のオブジェクトに実装可能です。"
+      ]
     },
     {
       "id": 44,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "File.write(\"test\", \"hellorubyworld\\n\")\nFile.open(\"test\") do |file|\n  file.seek(5)\n  print file.gets\nend",
+      "correct_answer": "B",
+      "explanation": "seekメソッドはファイルポインタを指定したバイト位置に移動します。この場合、5バイト目（0から数えて6文字目）に移動し、そこから行末までを読み込みます。",
       "options": [
         {
-          "label": "A",
-          "content": "hello"
+          "content": "hello",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "rubyworld"
+          "content": "rubyworld",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "hellor"
+          "content": "hellor",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "rubyw"
+          "content": "rubyw",
+          "label": "D"
         },
         {
-          "label": "E",
-          "content": "orubyworld"
+          "content": "orubyworld",
+          "label": "E"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "The `seek` method is used to move to a specific byte offset in an I/O stream.\nOffsets are zero-based, so `seek(5)` sets the position in the stream to just *after* the fifth byte.\n`seek`メソッドはI/Oストリームの特定のバイトオフセットに移動するために使用されます。\nオフセットは0ベースで、`seek(5)`は5バイト目の直後の位置にセットします。\n\n`gets`メソッドはストリームの現在の位置から行の終端まで読み込みます。"
+      ]
     },
     {
       "id": 45,
-      "content": "以下のコードではopenメソッドの第2引数を省略してファイルを開いています。このケースで暗黙的に第2引数として指定されるものを選択してください。**",
+      "content": "以下のコードではopenメソッドの第2引数を省略してファイルを開いています。このケースで暗黙的に第2引数として指定されるものを選択してください。",
+      "code": "file = open(\"sample.txt\")",
+      "correct_answer": "A",
+      "explanation": "Rubyのopenメソッドでは、モードを指定しない場合、デフォルトで'r'（読み取り専用）モードでファイルを開きます。これは安全性を考慮したデフォルト動作です。",
       "options": [
         {
-          "label": "A",
-          "content": "`r`"
+          "content": "r",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`r+`"
+          "content": "r+",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`a`"
+          "content": "a",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`a+`"
+          "content": "a+",
+          "label": "D"
         },
         {
-          "label": "E",
-          "content": "`w`"
+          "content": "w",
+          "label": "E"
         },
         {
-          "label": "F",
-          "content": "`w+`"
+          "content": "w+",
+          "label": "F"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "A",
-      "explanation": "`\"r\"`オープンモードは「ファイルの先頭から読み込みのみ」を意味します。\n\nこれはデフォルトの挙動として安全で、もっとも一般的なユースケースです。"
+      ]
     },
     {
       "id": 46,
-      "content": "**Q46: test_one.txtの内容をtest_two.txtにコピーするコードがあります。",
+      "content": "test_one.txtの内容をtest_two.txtにコピーするコードがあります。__(1)__に入る適切な記述を選択してください。test_two.txtがすでに存在する場合、このコードは最初にファイルサイズを0にし、先頭から内容を上書きするものとします。(2つ選択)",
+      "code": "open(\"test_one.txt\") {|source|\n  open(\"test_two.txt\", \"__(1)__\") {|dest|\n    dest.write(source.read)\n  }\n}",
+      "correct_answer": "D, E",
+      "explanation": "'w'モードはファイルを書き込みモードで開き、既存の内容を削除します。'w+'モードは読み書き両用で、'w'と同様に既存の内容を削除します。どちらもファイルが存在しない場合は新規作成します。",
       "options": [
         {
-          "label": "A",
-          "content": "`r+`"
+          "content": "r+",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`a`"
+          "content": "a",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`a+`"
+          "content": "a+",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`w`"
+          "content": "w",
+          "label": "D"
         },
         {
-          "label": "E",
-          "content": "`w+`"
+          "content": "w+",
+          "label": "E"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "D, E",
-      "explanation": "Rubyでは以下のI/Oオープンモードがサポ一トされています。\n\n```\n\"r\"  ファイルの先頭から読み込みのみ(デフォルトのモード)\n\n\"r+\" ファイルの先頭から読み書き可能\n\n\"w\"  既存のファイルを0バイトに切り詰めるか新しくファイルを作成し、書き込みのみ\n\n\"w+\" 既存のファイルを0バイトに切り詰めるか新しくファイルを作成し、読み書き可能\n\n\"a\"  存在しなければ新しくファイルを作成し、ファイル末尾に追記。書き込みのみ\n\n\"a+\" 存在しなければ新しくファイルを作成し、ファイル末尾に追記。読み書き可能\n```"
+      ]
     },
     {
       "id": 47,
-      "content": "**Q47: `Dir`クラスに存在しないクラスメソッドを選択してください。(2つ選択)**",
+      "content": "Dirクラスに存在しないクラスメソッドを選択してください。(2つ選択)",
+      "code": null,
+      "correct_answer": "B, C",
+      "explanation": "Dir.pwdは現在のディレクトリを返し、Dir.chdirはディレクトリを変更し、Dir.deleteはディレクトリを削除します。Dir.renameとDir.basenameは存在しないメソッドです。",
       "options": [
         {
-          "label": "A",
-          "content": "`Dir.pwd`"
+          "content": "Dir.pwd",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`Dir.rename`"
+          "content": "Dir.rename",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`Dir.basename`"
+          "content": "Dir.basename",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`Dir.chdir`"
+          "content": "Dir.chdir",
+          "label": "D"
         },
         {
-          "label": "E",
-          "content": "`Dir.delete`"
+          "content": "Dir.delete",
+          "label": "E"
         }
-      ],
-      "correct_answer": "B, C",
-      "explanation": "補足説明:\n\nfileutils標準ライブラリの`FileUtils.mv`はディレクトリの名前変更に使用できます。\n\n`File.basename`はパスの末尾のファイル名を取得するのに使用されます(例: `File.basename(\"long/path/to/something\") #=> \"something\"`)。"
+      ]
     },
     {
       "id": 48,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "p \"hello ruby world\"[6,4]",
+      "correct_answer": "B",
+      "explanation": "文字列に対する[n,m]の操作は、nで指定された位置から、m文字分の部分文字列を取り出します。この場合、6番目の文字（0から数えて）から4文字分を取り出すので、\"ruby\"が結果となります。",
       "options": [
         {
-          "label": "A",
-          "content": "`\"hello \"`"
+          "content": "\"hello \"",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`\"ruby\"`"
+          "content": "\"ruby\"",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`\" world\"`"
+          "content": "\" world\"",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "実行時にエラーになる"
+          "content": "実行時にエラーになる",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "部分配列のインデックスの指定方法(Q25)と同様に、開始位置と長さを指定して部分文字列を取得することができます。\n\nインデックスはバイト単位ではなく文字(コードポイント)単位であることに注意してください。"
+      ]
     },
     {
       "id": 49,
-      "content": "**Q49:** ",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "str = \"bat\"\nstr[1,1] = \"o\"\np str",
+      "correct_answer": "B",
+      "explanation": "str[1,1] = \"o\"は、文字列の2番目の文字（インデックス1）を「o」に置き換えます。結果として、\"bat\"の「a」が「o」に置き換わり、\"bot\"となります。",
       "options": [
         {
-          "label": "A",
-          "content": "`\"boo\"`"
+          "content": "\"boo\"",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "`\"bot\"`"
+          "content": "\"bot\"",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`\"oat\"`"
+          "content": "\"oat\"",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`\"o\"`"
+          "content": "\"o\"",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "置換文字列の長さは元の部分文字列の長さと同じでなくともよいことに注意してください。例えば以下のような操作が可能です。\n\n```\n>> str = \"boat\"\n=> \"boat\"\n>> str[1,2] = \"uil\"\n=> \"uil\"\n>> str\n=> \"built\"\n```"
+      ]
     },
     {
       "id": 50,
-      "content": "以下のコードがあります。**",
+      "content": "以下のコードの実行結果として正しいものを選択してください。(1つ選択)",
+      "code": "puts 5 * \"hi\"",
+      "correct_answer": "B",
+      "explanation": "Rubyでは、整数と文字列の乗算は定義されていません。文字列を繰り返す場合は、文字列 * 整数の形式を使用する必要があります。このコードは TypeError を発生させます。",
       "options": [
         {
-          "label": "A",
-          "content": "`\"hihihihihi\"`"
+          "content": "\"hihihihihi\"",
+          "label": "A"
         },
         {
-          "label": "B",
-          "content": "実行時にエラーになる"
+          "content": "実行時にエラーになる",
+          "label": "B"
         },
         {
-          "label": "C",
-          "content": "`\"5hi\"`"
+          "content": "\"5hi\"",
+          "label": "C"
         },
         {
-          "label": "D",
-          "content": "`\"5*hi\"`"
+          "content": "\"5*hi\"",
+          "label": "D"
         }
-      ],
-      "code": "```\n```",
-      "correct_answer": "B",
-      "explanation": "Rubyの数値クラスでは算術演算の時にオブジェクトを同じ型に変換する`coerce`メソッドが定義されています。このメソッドは`String`クラスでは定義されていないため、`TypeError`が発生します。\n\n`\"hi\" * 5`のように順番を入れ替えた場合、結果は`\"hihihihihi\"`になることに注意してください。これは`String`自体に`*`演算子が定義されていて、文字列が左辺の場合に使用されるためです。"
+      ]
     }
   ]
 }

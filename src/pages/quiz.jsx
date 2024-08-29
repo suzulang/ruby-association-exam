@@ -16,8 +16,10 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
+  const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false);
+  const [isMultipleChoice, setIsMultipleChoice] = useState(false);
+
   const quizData = quizType === 'gold' ? goldQuizData : silverQuizData;
   const questions = quizData.questions;
 
@@ -28,12 +30,31 @@ const Quiz = () => {
   }, [quizType, navigate]);
 
   useEffect(() => {
-    setSelectedAnswer(null);
-  }, [currentQuestion]);
+    setSelectedAnswers([]);
+    setIsMultipleChoice(questions[currentQuestion].correct_answer.length > 1);
+  }, [currentQuestion, questions]);
 
-  const handleAnswer = (selectedLabel) => {
-    setSelectedAnswer(selectedLabel);
-    if (questions[currentQuestion].correct_answer.includes(selectedLabel)) {
+  const handleAnswerSelection = (selectedLabel) => {
+    setSelectedAnswers(prev => {
+      if (isMultipleChoice) {
+        if (prev.includes(selectedLabel)) {
+          return prev.filter(label => label !== selectedLabel);
+        } else {
+          return [...prev, selectedLabel];
+        }
+      } else {
+        return [selectedLabel];
+      }
+    });
+  };
+
+  const submitAnswer = () => {
+    setIsAnswerSubmitted(true);
+    const currentQuestionAnswers = questions[currentQuestion].correct_answer;
+    const isCorrect = currentQuestionAnswers.length === selectedAnswers.length &&
+      currentQuestionAnswers.every(answer => selectedAnswers.includes(answer));
+
+    if (isCorrect) {
       setScore(score + 1);
     }
 
@@ -41,17 +62,20 @@ const Quiz = () => {
       const nextQuestion = currentQuestion + 1;
       if (nextQuestion < questions.length) {
         setCurrentQuestion(nextQuestion);
+        setSelectedAnswers([]);
+        setIsAnswerSubmitted(false);
       } else {
         setShowResult(true);
       }
-    }, 1000);
+    }, 2000);
   };
 
   const restartQuiz = () => {
     setCurrentQuestion(0);
     setScore(0);
     setShowResult(false);
-    setSelectedAnswer(null);
+    setSelectedAnswers([]);
+    setIsAnswerSubmitted(false);
   };
 
   return (
@@ -85,21 +109,25 @@ const Quiz = () => {
                     {questions[currentQuestion].options.map((option) => (
                       <Button
                         key={option.label}
-                        onClick={() => handleAnswer(option.label)}
+                        onClick={() => handleAnswerSelection(option.label)}
                         className={`
                           w-full text-left justify-start text-base
                           transition-all duration-200 ease-in-out
                           hover:scale-[1.02] hover:shadow-md
                           ${
-                            selectedAnswer === option.label
+                            isAnswerSubmitted
                               ? questions[currentQuestion].correct_answer.includes(option.label)
                                 ? 'bg-green-500 hover:bg-green-600 text-white'
-                                : 'bg-red-500 hover:bg-red-600 text-white'
-                              : 'bg-white hover:bg-indigo-50 text-gray-800 hover:text-indigo-700'
+                                : selectedAnswers.includes(option.label)
+                                  ? 'bg-red-500 hover:bg-red-600 text-white'
+                                  : 'bg-white hover:bg-indigo-50 text-gray-800 hover:text-indigo-700'
+                              : selectedAnswers.includes(option.label)
+                                ? 'bg-indigo-200 hover:bg-indigo-300 text-indigo-800'
+                                : 'bg-white hover:bg-indigo-50 text-gray-800 hover:text-indigo-700'
                           }
                         `}
                         variant="outline"
-                        disabled={selectedAnswer !== null}
+                        disabled={isAnswerSubmitted || (!isMultipleChoice && selectedAnswers.length > 0 && !selectedAnswers.includes(option.label))}
                       >
                         <div className="flex items-start">
                           <span className="font-semibold mr-2 mt-0.5">{option.label}.</span>
@@ -108,6 +136,13 @@ const Quiz = () => {
                       </Button>
                     ))}
                   </div>
+                  <Button 
+                    onClick={submitAnswer} 
+                    className="mt-4 w-full bg-indigo-600 hover:bg-indigo-700"
+                    disabled={selectedAnswers.length === 0 || isAnswerSubmitted}
+                  >
+                    回答を送信
+                  </Button>
                 </motion.div>
               </AnimatePresence>
               <div className="mt-6 flex justify-between items-center">
