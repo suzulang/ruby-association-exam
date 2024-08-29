@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "question": "什么是React的主要优势？",
+    "options": ["虚拟DOM", "双向数据绑定", "服务器端渲染", "以上都是"],
+    "correctAnswer": 0
+  },
+  {
+    "id": 2,
+    "question": "Next.js的主要特性是什么？",
+    "options": ["服务器端渲染", "静态站点生成", "文件系统路由", "以上都是"],
+    "correctAnswer": 3
+  },
+  {
+    "id": 3,
+    "question": "Tailwind CSS是什么类型的CSS框架？",
+    "options": ["预处理器", "后处理器", "实用优先", "组件库"],
+    "correctAnswer": 2
+  }
+]
