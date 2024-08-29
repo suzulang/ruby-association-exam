@@ -8,7 +8,7 @@ const Index = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-100 to-indigo-200">
       <Card className="w-full max-w-lg shadow-lg">
         <CardHeader className="text-center">
-          <CardTitle className="text-4xl font-bold text-indigo-700">QuizWhiz Haven</CardTitle>
+          <CardTitle className="text-4xl font-bold text-indigo-700">Ruby Association Exam</CardTitle>
           <CardDescription className="text-xl text-gray-600 mt-2">
             Ruby知識の冒険へようこそ！
           </CardDescription>
