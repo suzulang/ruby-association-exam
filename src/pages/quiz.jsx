@@ -6,14 +6,26 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import quizData from '@/data/quizQuestions.json';
+import { useParams, useNavigate } from 'react-router-dom';
+import silverQuizData from '@/data/ruby_silver.json';
+import goldQuizData from '@/data/ruby_gold.json';
 
 const Quiz = () => {
+  const { quizType } = useParams();
+  const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  
+  const quizData = quizType === 'gold' ? goldQuizData : silverQuizData;
   const questions = quizData.questions;
+
+  useEffect(() => {
+    if (quizType !== 'gold' && quizType !== 'silver') {
+      navigate('/quiz-selection');
+    }
+  }, [quizType, navigate]);
 
   useEffect(() => {
     setSelectedAnswer(null);
