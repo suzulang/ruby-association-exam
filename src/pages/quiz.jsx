@@ -127,7 +127,7 @@ const Quiz = () => {
                           }
                         `}
                         variant="outline"
-                        disabled={isAnswerSubmitted || (!isMultipleChoice && selectedAnswers.length > 0 && !selectedAnswers.includes(option.label))}
+                        disabled={isAnswerSubmitted}
                       >
                         <div className="flex items-start">
                           <span className="font-semibold mr-2 mt-0.5">{option.label}.</span>
