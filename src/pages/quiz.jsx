@@ -86,6 +86,10 @@ const Quiz = () => {
     setIsAnswerSubmitted(false);
   };
 
+  const goToQuizSelection = () => {
+    navigate('/quiz-selection');
+  };
+
   return (
     <div className="container mx-auto px-4 py-8 min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-indigo-100">
       <Card className="w-full max-w-3xl shadow-lg">
@@ -144,23 +148,37 @@ const Quiz = () => {
                       </Button>
                     ))}
                   </div>
-                  <Button 
-                    onClick={submitAnswer} 
-                    className="mt-4 w-full bg-indigo-600 hover:bg-indigo-700"
-                    disabled={selectedAnswers.length === 0 || isAnswerSubmitted}
-                  >
-                    回答を送信
-                  </Button>
+                  <div className="mt-4 flex justify-between">
+                    <Button 
+                      onClick={goToQuizSelection}
+                      className="bg-gradient-to-r from-indigo-700 to-purple-800 hover:from-indigo-800 hover:to-purple-900 text-white"
+                    >
+                      クイズ選択に戻る
+                    </Button>
+                    <Button 
+                      onClick={submitAnswer} 
+                      className={`
+                        ${selectedAnswers.length === 0 || isAnswerSubmitted
+                          ? 'bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600'
+                          : 'bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600'
+                        }
+                        text-white
+                      `}
+                      disabled={selectedAnswers.length === 0 || isAnswerSubmitted}
+                    >
+                      回答を送信
+                    </Button>
+                  </div>
+                  <div className="mt-6 flex justify-between items-center">
+                    <Badge variant="outline" className="text-sm">
+                      質問 {currentQuestion + 1} / {questions.length}
+                    </Badge>
+                    <Badge variant="secondary" className="text-sm">
+                      スコア: {score}
+                    </Badge>
+                  </div>
                 </motion.div>
               </AnimatePresence>
-              <div className="mt-6 flex justify-between items-center">
-                <Badge variant="outline" className="text-sm">
-                  質問 {currentQuestion + 1} / {questions.length}
-                </Badge>
-                <Badge variant="secondary" className="text-sm">
-                  スコア: {score}
-                </Badge>
-              </div>
             </>
           ) : (
             <motion.div
@@ -172,13 +190,22 @@ const Quiz = () => {
               <h2 className="text-3xl font-bold mb-4 text-indigo-700">クイズ終了！</h2>
               <p className="text-2xl mb-4 text-gray-700">あなたのスコア: <span className="font-bold text-indigo-600">{score} / {questions.length}</span></p>
               <Separator className="my-6" />
-              <Button 
-                onClick={restartQuiz} 
-                size="lg" 
-                className="mt-4 bg-indigo-600 hover:bg-indigo-700 transition-all duration-200 ease-in-out hover:scale-105"
-              >
-                もう一度挑戦する
-              </Button>
+              <div className="flex justify-center space-x-4">
+                <Button 
+                  onClick={goToQuizSelection}
+                  size="lg" 
+                  className="mt-4 text-white transition-all duration-200 ease-in-out hover:scale-105 bg-gradient-to-r from-indigo-700 to-purple-800 hover:from-indigo-800 hover:to-purple-900"
+                >
+                  クイズ選択に戻る
+                </Button>
+                <Button 
+                  onClick={restartQuiz} 
+                  size="lg" 
+                  className="mt-4 text-white transition-all duration-200 ease-in-out hover:scale-105 bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600"
+                >
+                  もう一度挑戦する
+                </Button>
+              </div>
             </motion.div>
           )}
         </CardContent>
